@@ -1,0 +1,28 @@
+<div call="full-container">
+    <mat-card class="sectionSummary">
+        <mat-card-title>Search Scenarios</mat-card-title>
+        <mat-card-content>
+            <p>
+                Search for scenarios by UserId and CreationDate range
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="sComponent">
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="By UserId">
+                    <app-scenarios-search-by-userid (notify)="onSeachByUserId($event)"></app-scenarios-search-by-userid>
+                </mat-tab>
+                <mat-tab label="By Creation Date">
+                    <app-scenarios-search-by-date-range (notify)="onSeachByCreationDateRange($event)"></app-scenarios-search-by-date-range>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="searchString.length > 0"> {{searchString}}</mat-card>
+
+    <div *ngIf="searchByuserIdResult">
+        <app-scenario-details [scenario]="searchByuserIdResult"> </app-scenario-details>
+    </div>
+</div>
